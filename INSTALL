@@ -1,0 +1,73 @@
+DIFFBOT C++ CLIENT
+
+  This is the official C++ client library for Diffbot API service.
+  It provides access for Diffbot API via HTTP protocol.
+  It is indended to be used by C++ software developers.
+
+INSTALLING
+
+  Diffbot client is dependent on the following 3rd party open-source libraries:
+
+  1) JSONCPP library is used for parsing JSON response from the diffbot server.
+    There are several alternative ways how to obtain the JSONCPP library:
+    
+    a) Use the library provided in deps/ directory
+    
+    b) Download from JSONCPP homepage: http://jsoncpp.sourceforge.net/
+    
+    c) Install using OS package manager. For example, on Ubuntu/Debian Linux:
+    sudo apt-get install libjsoncpp-dev
+    
+    d) Checkout from SVN repository:
+    svn co http://jsoncpp.svn.sourceforge.net/svnroot/jsoncpp/trunk/
+  
+  2) CURL library is used in order to perform HTTP requests to diffbot server.
+    In most Linux distributives it is installed by default.
+
+    Homepage: http://curl.haxx.se/
+    
+    How to obtain it:
+
+    a) Use the library provided in deps/ directory (for MSVC only)
+
+    b) Download link: http://curl.haxx.se/download.html (for any platform)
+
+BUILDING AND TESTING
+
+  1) Linux (GNU C++):
+
+    Type the following command in shell:
+
+      $ make test
+
+    This will build the diffbot executable.
+    It can be used to run tests which get the article content from any website, i.e. http://www.diffbot.com/
+
+    Diffbot executable usage:
+      $ ./diffbot <website_url> [<method>]
+      (<method> is optional)
+
+    For example:
+      $ ./diffbot http://www.diffbot.com article
+
+    You will need GNU C++ compiler with standard set of libraries.
+
+    The following other options are available:
+
+       $ make all       - build up, but do not run test
+       $ make clean     - clean up object and executable files
+
+  2) Windows (MSVC):
+
+    You will need to create a solution and add Diffbot client's header and source files.
+    Also you will need to add the dependent libraries and their header files.
+    Please refer to your IDE and compiler documentation if needed.
+
+    Notes on Windows platform:
+      - We recommend to turn Unicode support off for better compatibility.
+      - We recommend to turn precompiled headers off.
+      - You will need to specify Include and Library paths in your project configuration.
+      - ZLIB1.DLL is needed to make CURL library work (its provided in deps/ directory).
+      - We recommend to copy ZLIB1.DLL and LIBCURL.DLL into Windows/System32 directory.
+
+
